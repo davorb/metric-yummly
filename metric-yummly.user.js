@@ -9,6 +9,7 @@
 // @released        2014-06-06
 // @updated         2006-04-06
 // @compatible      Greasemonkey
+// @grant           none
 // ==/UserScript==
 
 /*
@@ -27,5 +28,10 @@
 */
 
 (function(){
-  console.log('davor!');
+  var loc = location.toString();
+  var isImperial = loc.search(/unitType=imperial/i);
+  if (isImperial !== -1) {
+    var metricLocation = loc.replace('imperial', 'metric');
+    location.assign(metricLocation);
+  }
 })();
