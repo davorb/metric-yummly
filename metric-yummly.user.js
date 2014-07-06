@@ -4,7 +4,7 @@
 // @namespace       http://www.github.com/davorb/metric-yummly
 // @description     Automatically switches from imperial to metric measurements
 // @license         Creative Commons Attribution License
-// @version         0.2
+// @version         0.3
 // @include         http://www.yummly.com/*
 // @released        2014-06-06
 // @updated         2006-04-06
@@ -32,13 +32,17 @@
     return location.toString().search(s) !== -1;
   }
 
-  if (contains(/unitType=imperial/i)) {
+  function searchContains(s) {
+    return location.search.search(s) !== -1;
+  }
+
+  if (searchContains(/unitType=imperial/i)) {
     var metricLocation =
-          location.toString().replace(/unitType=imperial/i,
+          location.search.replace(/unitType=imperial/i,
                                       'unitType=metric');
     location.assign(metricLocation);
   } else if (contains(/yummly.com\/recipe\//i) &&
-             !contains(/unitType=metric/i)) {
-    location.assign(location.toString()+'&unitType=metric');
+             !searchContains(/unitType=metric/i)) {
+    location.search = location.search+'&unitType=metric';
   }
 })();
