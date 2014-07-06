@@ -31,7 +31,7 @@
   var loc = location.toString();
   var isImperial = loc.search(/unitType=imperial/i);
   if (isImperial !== -1) {
-    var metricLocation = loc.replace('imperial', 'metric');
+    var metricLocation = loc.replace(/unitType=imperial/i, 'unitType=metric');
     location.assign(metricLocation);
   }
 })();
