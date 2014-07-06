@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name            Metric Yummly
+// @name            metric-yummly
 // @author          Davor Babic
 // @namespace       http://www.github.com/davorb/metric-yummly
 // @description     Automatically switches from imperial to metric measurements
